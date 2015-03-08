@@ -2,6 +2,7 @@ var express = require('express'),
 	bodyParser = require("body-parser"),
 	fs = require("fs"),
 	multer = require("multer"),
+	gutil = require ('gulp-util'),
 	app = express();
 
 var connectAssets = require('connect-assets');
@@ -24,5 +25,5 @@ app.use('/', require('./controllers/static'));
 
 
 var server = app.listen(port, function() {
-	console.log("listening on localhost:" + port);
+	gutil.log(gutil.colors.green("Server started on localhost:" + port));
 });
