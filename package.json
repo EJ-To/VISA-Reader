@@ -1,0 +1,45 @@
+{
+  "name": "VISA-Reader",
+  "version": "1.0.0",
+  "description": "TD VISA bill reader",
+  "main": "gulpfile.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattmcfad/VISA-Reader.git"
+  },
+  "keywords": [
+    "VISA",
+    "Reader"
+  ],
+  "author": "@mattmcfad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattmcfad/VISA-Reader/issues"
+  },
+  "homepage": "https://github.com/mattmcfad/VISA-Reader",
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-autoprefixer": "^1.0.0",
+    "gulp-concat": "^2.4.1",
+    "gulp-jade": "^0.8.0",
+    "gulp-jshint": "^1.8.4",
+    "gulp-livereload": "^2.1.1",
+    "gulp-stylus": "^1.3.3",
+    "gulp-uglify": "^1.0.1",
+    "gulp-util": "^3.0.1",
+    "gulp-watch": "^1.0.4"
+  },
+  "dependencies": {
+    "coffee-script": "^1.7.0",
+    "express": "^4.10.5",
+    "mongodb": "^1.4.23",
+    "multer": "^0.1.6",
+    "body-parser": "^1.10.0"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
