@@ -5,6 +5,15 @@ block content
   p.lead Analyzing and categorizing TD VISA bills
   hr
   .row
+    .col-md-4
+      h2 Upload VISA bill
+      form#csvUpload
+        .form-group
+          label(for="upload") Upload .csv file
+          input.form-control#csvInput(type="file")
+        button.btn.btn-default(type="submit") Upload
+  hr
+  .row
     .col-sm-6
       h2 Heading
       p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
