@@ -23,6 +23,8 @@ app.use(connectAssets({
 
 app.use('/', require('./controllers/static'));
 
+app.use('/api/upload', require('./controllers/api/upload'))
+
 
 var server = app.listen(port, function() {
 	gutil.log(gutil.colors.green("Server started on localhost:" + port));
