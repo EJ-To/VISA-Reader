@@ -1,3 +1,4 @@
 *.csv
+*.tiff
 
 node_modules
