@@ -13,6 +13,6 @@ watch      = require 'gulp-watch'
 
 
 gulp.task 'test', ->
-	console.log("hello world")
+  console.log("hello world")
 
 gulp.task 'default', ['test']
