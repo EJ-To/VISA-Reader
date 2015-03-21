@@ -1,14 +1,14 @@
-var express = require('express'),
-	bodyParser = require("body-parser"),
-	fs = require("fs"),
-	multer = require("multer"),
-	gutil = require ('gulp-util'),
-	app = express();
+var express     = require('express'),
+  bodyParser    = require("body-parser"),
+  fs            = require("fs"),
+  multer        = require("multer"),
+  gutil         = require ('gulp-util'),
+  connectAssets = require('connect-assets'),
+  path          = require('path'),
+  app           = express();
 
-var connectAssets = require('connect-assets');
-var path = require('path');
 
-var	port = process.env.PORT || 8888;
+var port = process.env.PORT || 8888;
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -27,5 +27,5 @@ app.use('/api/upload', require('./controllers/api/upload'))
 
 
 var server = app.listen(port, function() {
-	gutil.log(gutil.colors.green("Server started on localhost:" + port));
+  gutil.log(gutil.colors.green("Server started on localhost:" + port));
 });
