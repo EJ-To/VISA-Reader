@@ -4,17 +4,19 @@ var express  = require('express'),
   boostrap   = require('bootstrap-styl'),
   fs         = require('fs'),
   multer     = require('multer'),
-  gutil      = require ('gulp-util'),
+  gutil      = require('gulp-util'),
   path       = require('path'),
   app        = express();
 
 
 var port = process.env.PORT || 8888;
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade'); // render engine
+
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(multer()); // for parsing multipart/form-data
-
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
@@ -25,12 +27,10 @@ app.use(stylus.middleware({
   compile: compile
 }));
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade'); // render engine
-
+app.use(express.static(__dirname + '/public'));
+app.use('/api/upload', require('./controllers/api/upload'));
 app.use('/', require('./controllers/static'));
 
-app.use('/api/upload', require('./controllers/api/upload'))
 
 
 var server = app.listen(port, function() {
