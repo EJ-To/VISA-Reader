@@ -31,8 +31,8 @@ app.use(stylus.middleware({
 }));
 app.use(express.static(__dirname + '/public'));
 
-app.use('/api/upload', require('./controllers/api/upload'));
-app.use('/', require('./controllers/static'));
+app.use('/api/upload', require('./routes/api/upload'));
+app.use('/', require('./routes/static'));
 
 app.set('view engine', 'jade'); // render engine
 app.set('views', __dirname + '/views');
