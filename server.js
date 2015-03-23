@@ -19,22 +19,23 @@ app.use(multer()); // for parsing multipart/form-data
 app.use(morgan('dev'));
 
 function compile(str, path) {
+  console.log('Compiling Stylus');
   return stylus(str)
-    //.set('filename', path)
+    .set('filename', path)
     .use(boostrap());
 }
 app.use(stylus.middleware({
-  debug: true,
-  src: path.join(__dirname, 'public/css'),
+  src: __dirname + '/assets/css',
+  dest: __dirname + '/public/css',
   compile: compile
 }));
+app.use(express.static(__dirname + '/public'));
 
 app.use('/api/upload', require('./controllers/api/upload'));
-app.use('/public', express.static(path.join(__dirname, 'public')));
-//app.use('/', require('./controllers/static'));
+app.use('/', require('./controllers/static'));
 
 app.set('view engine', 'jade'); // render engine
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', __dirname + '/views');
 
 
 var server = app.listen(port, function() {
