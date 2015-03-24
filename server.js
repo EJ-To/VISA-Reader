@@ -7,15 +7,19 @@ var express  = require('express'),
   multer     = require('multer'),
   gutil      = require('gulp-util'),
   path       = require('path'),
+  browserify = require('browserify-middleware'),
   app        = express();
 
 
 var port = process.env.PORT || 8888;
 
-
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(multer()); // for parsing multipart/form-data
+// for parsing application/json
+app.use(bodyParser.json());
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+// for parsing multipart/form-data
+app.use(multer());
+// Apache style server logging
 app.use(morgan('dev'));
 
 function compile(str, path) {
@@ -29,6 +33,8 @@ app.use(stylus.middleware({
   dest: __dirname + '/public/css',
   compile: compile
 }));
+
+app.use('/js', browserify(__dirname + '/assets/js'));
 app.use(express.static(__dirname + '/public'));
 
 app.use('/api/upload', require('./routes/api/upload'));
@@ -36,7 +42,6 @@ app.use('/', require('./routes/static'));
 
 app.set('view engine', 'jade'); // render engine
 app.set('views', __dirname + '/views');
-
 
 var server = app.listen(port, function() {
   gutil.log(gutil.colors.green("Server started on localhost:" + port));

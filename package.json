@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/EJ-To/VISA-Reader",
   "devDependencies": {
+    "browserify-middleware": "^5.0.2",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-concat": "^2.5.2",
